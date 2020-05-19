@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
 
 void aide()
 {
-    printf("Usage : ./%s [URI (%d caracteres max)]\n",argv[0], TAILLE_MAX-1);
+    printf("Usage : ./%s [URI (%d caracteres max)]\n", argv[0], TAILLE_MAX-1);
     printf("Protocoles reconnus: http(s), ftp, ssh, git, spotify\n");
 }
