@@ -1,17 +1,5 @@
 #include "../include/uri.h"
 
-int taille(char *argument)
-{
-    for (int i = 0; i <= TAILLE_MAX; i++) {
-        if (argument[i] == '\0') {
-            return (i);
-        }
-    }
-
-    return -1;
-}
-
-
 int main(int argc, char *argv[])
 {
     if (argc == 2) {
@@ -27,6 +15,17 @@ int main(int argc, char *argv[])
     }
 
     return (EXIT_SUCCESS);
+}
+
+int taille(char *argument)
+{
+    for (int i = 0; i <= TAILLE_MAX; i++) {
+        if (argument[i] == '\0') {
+            return (i);
+        }
+    }
+
+    return -1;
 }
 
 void aide()
