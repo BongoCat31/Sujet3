@@ -7,14 +7,14 @@ int main(int argc, char *argv[])
 {
     if (argc == 2) {
         if (taille(argv[1]) == -1) {
-            aide();
+            aide(argv[0]);
         }
         else {
             choixProto(argv[1]);
         }
     }
     else {
-        aide();
+        aide(argv[0]);
     }
 
     return (EXIT_SUCCESS);
