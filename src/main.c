@@ -34,6 +34,6 @@ int taille(char *argument)
 
 void aide(char *nomProgramme)
 {
-    printf("Usage : %s [URI (%d caracteres max)]\n", argv[0], TAILLE_MAX-1);
+    printf("Usage : %s [URI (%d caracteres max)]\n", nomProgramme, TAILLE_MAX-1);
     printf("Protocoles reconnus: http(s), ftp, ssh, git, spotify\n");
 }
