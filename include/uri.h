@@ -4,18 +4,22 @@
 
 #define TAILLE_MAX 256
 
-void aide();
-
+/* choixProto.c */
 void choixProto(char *uri);
 int numPort (char *protocole);
+/* ************ */
 
+/* outil.c */
 char *delim(char *chaine, char *delimiteur, char token[2]);
 void leftDecalage(char *chaine, int c);
+/* ******* */
 
+/* Formatage des protocoles pris en charge */
 void generic(char *uri, char *proto);
 void ssh(char *uri);
 void github(char *uri);
 void spotify(char *uri);
+/* *************************************** */
 
 /*
     http(s)|ftp:[//authority]path[?query][#fragment]
