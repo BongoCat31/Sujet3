@@ -2,9 +2,7 @@
 
 int taille(char *argument)
 {
-    int i;
-
-    for (i = 0; i <= TAILLE_MAX; i++) {
+    for (int i = 0; i <= TAILLE_MAX; i++) {
         if (argument[i] == '\0') {
             return (i);
         }
@@ -33,6 +31,6 @@ int main(int argc, char *argv[])
 
 void aide()
 {
-    printf("Usage : ./nom_programme [URI (%d caracteres max)]\n", TAILLE_MAX-1);
+    printf("Usage : ./%s [URI (%d caracteres max)]\n",argv[0], TAILLE_MAX-1);
     printf("Protocoles reconnus: http(s), ftp, ssh, git, spotify\n");
 }
