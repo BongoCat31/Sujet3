@@ -1,167 +1,115 @@
 [![Version](https://img.shields.io/badge/Langage-C-blue)]()
 
-# Sujet 4 - Chiffrage de messages
-Chiffrement et déchiffrement, algorithme par décalage (César et Vigenère)
-
-![Banner](https://user-images.githubusercontent.com/55319869/82814539-a7c24b00-9e97-11ea-810f-3a40b5f72d59.png)
+# Sujet 3 - URI Analyse
+Analyse de different URI : HTTP, HTTPS, FTP, SSH, GIT, SPOTIFY
 
 
 ## Fonctions 
 |Sommaire                                                                                                  |
 | ------                                                                                                   |
-|   [wsaisieTexte](#wsaisietexte) - Saisie de valeur de l'utilisateur                                      |
-|   [wtoi](#wtoi) - Conversion chaîne de caractère en entier                                               |
-|   [choixMultiple](#choixmultiple) - Affichage d'une menu de choix multiple                               |
-|   [lanceAlgo](#lancealgo) - Lance l'algorithme de chiffrement ou déchiffrement choisie par l'utilisateur |
-|   [saisieMessage](#saisiemessage) - Outil de saisie du texte à chiffre ou à déchiffrer                   |
-|   [saisieCle](#saisiecle) - Saisie de la clé                                                             |
-|   [conversion](#conversion) - Vérifie l'absence de caractères spéciaux, et convertit les accents         |
-|   [cesar](#cesar) - Outil de lancement de l'algorithme de César                                          |
-|   [vigenere](#vigenere) - Outil de lancement de l'algorithme de Vigenère                                 |
-|   [algo](#algo) - Algorithme par décalage (chiffrement et déchiffrement)                                 |
+|   [choixProto](#choixProto) - Choisi le protocole                                                        |
+|   [numPort](#numPort) - Choisi le port                                                                   |
+|   [delim](#delim) - Retourne la chaine de caractere avant le delimiteur                                  |
+|   [leftDecalage](#lleftDecalage) - Decale une chaine de caractere vers la gauche                         |
+|   [generic](#generic) - Permet de detecter une URI de type générique ( http, https, ftp )                |
+|   [ssh](#ssh) - Permet de detecter une URI de type SSH                                                   |
+|   [github](#github) - Permet de detecter une URI de type github                                          |
+|   [spotify](#spotify) - Permet de detecter une URI de type spotify                                       |
 
 <br/>
 
-### wsaisieTexte
+### choixProto
 ```c
-int wsaisieTexte(wchar_t *chaine, int longueur)
+void choixProto(char *uri)
 ```
 
 >Paramètres :
 >
->  * wchar_t *chaine - Variable dans laquelle sera enregistrée la valeure saisie au clavier par l'utilisateur
->    
->  * int longueur - Longueur maximale (en comptant le caractère de fin '\0') que pourra contenir la chaîne
+>  * char *uri - Chaine de caractere contenant l'URI
 
->Retourne :
->
->  * int - EXIT_SUCCESS ou EXIT_FAILURE
-
-### wtoi
+### numPort
 ```c
-int wtoi(wchar_t *chaine)
+int numPort (char *protocole);
 ```
 
 >Paramètre :
 >
->  * wchar_t *chaine - Chaîne à convertir
+>  * char *protocole - Chaine de caractere contenant le protocole
 
 >Retourne :
 >
->  * int - Entier convertit ou -84 si chaîne trop longue | 0 si caractère n'est pas un chiffre
+>  * int - Retourne le numero du port
   
 <br/>
 
-### choixMultiple
+### delim
 ```c
-wchar_t choixMultiple(const wchar_t *chaine, wchar_t taille)
+char *delim(char *chaine, char *delimiteur, char token[2])
 ```
 
 >Paramètres :
 >
->  * const wchar_t *chaine - Question pour le choix multiple
+>  * char *chaine - Contient la chaine a delimiter
 >
->  * wchar_t taille - Nombre maximale de choix possible
+>  * char *delimiteur - Chaine de caractere contenant le(s) delimiteur(s)
+>
+> * char token[2] - Si delimiteur > 1 alors le premier delimiteur est enregistré dans token
 
 >Retourne :
 >
->  * wchar_t - Réponse au choix multiple
+>  * char - Retourne une chaine de caractere
 
-### lanceAlgo
+### leftDecalage
 ```c
-int lanceAlgo(wchar_t tab[3])
+void leftDecalage(char *chaine, int c);
 ```
 
 >Paramètre :
 >
->  * wchar_t tab[3] - Valeur permettant de lancer la bonne méthode de chiffrement
-
->Retourne :
+>  * char *chaine - Chaine de caractere a decaler
 >
->  * int - EXIT_SUCCESS ou EXIT_FAILURE
+> * int c - Nombre de charactere a decaler
 
 <br/>
 
-### saisieMessage
+### generic
 ```c
-void saisieMessage(wchar_t *chaine, bool choix)
+void generic(char *uri, char *proto)
 ```
 
 >Paramètres :
 >
->  * wchar_t *chaine - Variable ou sera stockée le message lu 
+>  * char *uri - Chaine de caractere contenant l'URI
 >   
->  * bool choix - Chiffrement ou déchiffrement
+>  * char *proto - Chaine de caractere contenant le protocole
 
-### saisieCle 
+### ssh 
 ```c
-void saisieCle(wchar_t *cle, int taille)
+void ssh(char *uri)
 ```
 
 >Paramètres :
 >
->  * wchar_t *cle - Variable de stockage pour la clé
->
->  * int taille - Taille maximale de la clé
+>  * char *uri - Chaine de caractere contenant l'URI
 
 <br/>
 
-### conversion
+### github
 ```c
-int conversion(wchar_t *chaine)
+void github(char *uri)
 ```
 
 >Paramètre :
 >
->  * wchar_t *chaine - Chaîne à convertir
-
->Retourne :
->
->  * int - EXIT_SUCCESS ou EXIT_FAILURE
+>  * char *uri - Chaine de caractere contenant l'URI
 
 <br/>
 
-### cesar
+### spotify
 ```c
-int cesar(bool choix)
+void spotify(char *uri)
 ```
 
 >Paramètre :
 >
->  * bool choix - Chiffrement ou déchiffrement
-
->Retourne :
->
->  * int - EXIT_SUCCESS ou EXIT_FAILURE
-   
-### vigenere   
-```c
-int vigenere(bool choix)
-```
-
->Paramètre :
->
->  * bool choix - Chiffrement ou déchiffrement
-
->Retourne :
->
->  * int - EXIT_SUCCESS ou EXIT_FAILURE
-
-<br/>
-
-### algo
-```c
-int algo(wchar_t chaine, int cle, bool choix)
-```
-
->Paramètres :
->
-> *  wchar_t *chaine - Message chiffré ou déchiffré
->   
-> *  int cle - Clé
->    
->   * bool choix - Chiffrement ou déchiffrement
-
->Retourne :
->
->  * int - Retourne le code ASCII de la modification du caractère subi par l'algorithme
+>  * char *uri - Chaine de caractere contenant l'URI
